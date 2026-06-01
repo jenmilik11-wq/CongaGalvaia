@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONGA &amp; GALVAIA | Grupo Inmobiliario</title>
+
+  <!-- ======================================================
+       FUENTE: Montserrat desde Google Fonts
+       Pesos: 400=Regular, 600=SemiBold, 700=Bold, 900=Black
+  ====================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- ======================================================
+       CSS GLOBAL — todos los estilos del sitio
+       Para modificar colores, tipografía, navbar, responsive, etc.:
+       edita galvaia-styles.css
+  ====================================================== -->
+  <link rel="stylesheet" href="galvaia-styles.css">
+</head>
+<body>
+
+<!-- ==============================================================
+     NAVBAR
+     Para modificar estilos: galvaia-styles.css sección 03 y 04
+     Para modificar links: busca nav-menu en este archivo
+============================================================== -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <!-- LOGO: reemplaza logo-galvaia.png -->
+    <a href="#" onclick="showPage('inicio')" class="nav-logo">
+      <img src="Logo.png" alt="Conga &amp; Galvaia">
+    </a>
+
+    <!-- MENÚ PRINCIPAL: barra blanca única tipo píldora -->
+    <div class="nav-menu" id="navMenu">
+      <!-- data-page se usa en JS para marcar el link activo -->
+      <a href="#" data-page="inicio"   onclick="showPage('inicio')"   class="activo">Inicio</a>
+
+      <!-- Dropdown de proyectos -->
+      <div class="nav-dropdown" id="navDropdown">
+        <span class="drop-btn" data-page="proyectos" onclick="toggleSubMenu(event)">Proyectos ▾</span>
+        <div class="drop-menu" id="dropMenu">
+          <div class="drop-col">
+            <div class="drop-label">Activos</div>
+            <a href="#" onclick="showPage('armonika');cerrarDropdown()">Armonika</a>
+            <a href="#" onclick="showPage('gemalta');cerrarDropdown()">Gemalta</a>
+            <a href="#" onclick="showPage('cataleya');cerrarDropdown()">Cataleya</a>
+          </div>
+          <div class="drop-col-divider"></div>
+          <div class="drop-col">
+            <div class="drop-label">Culminados</div>
+            <a href="#" class="drop-culminado">Esmeralda</a>
+            <a href="#" class="drop-culminado">Los Alpes</a>
+            <a href="#" class="drop-culminado">El Alva</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" data-page="nosotros" onclick="showPage('nosotros')">Nosotros</a>
+      <a href="#" data-page="refiere">Refiere y Gana</a>
+      <a href="#" data-page="contacto" onclick="showPage('contacto')">Contacto</a>
+      <a href="#" data-page="blog">Blog</a>
+
+      <!-- Solo visible en mobile -->
+      <a href="#" onclick="showPage('contacto')" class="nav-cta-mob" style="display:none">Contáctanos</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="#" onclick="showPage('contacto')" class="nav-cta">Contáctanos</a>
+      <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █                                                  █
+     █   PÁGINA: INICIO                                 █
+     █   id="page-inicio"                               █
+     █                                                  █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page page-active" id="page-inicio">
+
+  <!-- ── HERO SLIDER ────────────────────────────────────────
+       3 slides con imagen de fondo y texto diferente.
+       PARA AGREGAR IMAGEN: reemplaza el div.slide-ph por:
+         <img src="hero-1.jpg" alt="...">
+       PARA USAR VIDEO: reemplaza por:
+         <video autoplay muted loop playsinline>
+           <source src="hero-1.mp4" type="video/mp4">
+         </video>
+  ─────────────────────────────────────────────────────── -->
+  <section class="hero">
+
+    <!-- Fondos de cada slide -->
+    <div class="hero-slides">
+      <!-- SLIDE 1: reemplaza el div por <img src="hero-1.jpg"> -->
+      <div class="hero-slide active">
+        <img src="Portada 01.png">
+      </div>
+      <!-- SLIDE 2: reemplaza el div por <img src="hero-2.jpg"> -->
+      <div class="hero-slide">
+        <img src="Portada 02.png">
+      </div>
+      <!-- SLIDE 3: reemplaza el div por <img src="hero-3.jpg"> -->
+      <div class="hero-slide">
+        <img src="Portada 03.png">
+      </div>
+    </div>
+
+    <!-- Texto del Slide 1 -->
+    <div class="hero-slide-content active">
+      <div class="hero-slide-inner">
+        <div class="hero-badge">⭐ Alta Demanda</div>
+        <h1>Villa Cataleya<br><span>80% Vendido</span></h1>
+        <p>Últimos lotes disponibles desde 200 m². <br>¡No te quedes sin el tuyo!</p>
+        <div class="hero-btns">
+          <a href="#" onclick="document.getElementById('proyectos-section').scrollIntoView({behavior:'smooth'})" class="btn-primary">Ver Lotes</a>
+          <a href="#" onclick="showPage('contacto')" class="btn-ghost">Contactar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto del Slide 2 -->
+    <div class="hero-slide-content">
+      <div class="hero-slide-inner">
+        <div class="hero-badge">⭐ Inversión Premium</div>
+        <h1>Descubre tu<br><span>Mejor Inversión</span></h1>
+        <p>Oxapampa te brinda naturaleza, exclusividad y <br>calidad de vida en un entorno único.</p>
+        <div class="hero-btns">
+          <a href="#" onclick="document.getElementById('proyectos-section').scrollIntoView({behavior:'smooth'})" class="btn-primary">Explorar Proyectos</a>
+          <a href="#" onclick="showPage('contacto')" class="btn-ghost">Contactar Ahora</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto del Slide 3 -->
+    <div class="hero-slide-content">
+      <div class="hero-slide-inner">
+        <div class="hero-badge">⭐ Casa de Campo</div>
+        <h1>Lotes desde<br><span>500 m²</span></h1>
+        <p>El condominio ecológico más grande de la <br>Selva Central con habilitación urbana.</p>
+        <div class="hero-btns">
+          <a href="#" onclick="document.getElementById('proyectos-section').scrollIntoView({behavior:'smooth'})" class="btn-primary">Ver Proyectos</a>
+          <a href="#" onclick="showPage('contacto')" class="btn-ghost">Contactar Ahora</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dots de navegación del slider -->
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="heroGo(0)"></button>
+      <button class="hero-dot" onclick="heroGo(1)"></button>
+      <button class="hero-dot" onclick="heroGo(2)"></button>
+    </div>
+
+  </section>
+
+  <!-- ── STATS ────────────────────────────────────────────── -->
+  <div class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <!-- Para modificar: cambia el número y la etiqueta -->
+        <div class="stat"><div class="stat-n counter" data-target="15" data-suffix="+">0</div><div class="stat-l">Años de Experiencia</div></div>
+        <div class="stat"><div class="stat-n counter" data-target="3" data-suffix="">0</div><div class="stat-l">Proyectos Activos</div></div>
+        <div class="stat"><div class="stat-n counter" data-target="2400" data-suffix="+" data-separator=",">0</div><div class="stat-l">Lotes Vendidos</div></div>
+        <div class="stat"><div class="stat-n counter" data-target="98" data-suffix="%">0</div><div class="stat-l">Clientes Satisfechos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROYECTOS ACTIVOS ────────────────────────────────── -->
+  <section class="section" id="proyectos-section">
+    <div class="wrap">
+      <div class="text-center">
+        <!--<div class="section-tag">Proyectos activos</div>-->
+        <h2 class="section-title">Nuestros Proyectos</h2>
+        <p class="section-sub">Habilitaciones urbanas con ubicaciones estratégicas, servicios completos y financiamiento accesible.</p>
+      </div>
+      <div class="projects-grid">
+
+        <!-- TARJETA Armonika: reemplaza foto-armonika.jpg -->
+        <div class="pcard">
+          <div class="pcard-img" onclick="showPage('armonika')">
+            <img src="1 armonika.png" alt="Armonika" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Proyecto Armonika</div>
+            <p class="pcard-desc">Colonia Ecoamigable en Peñaflor, Oxapampa. Habilitación urbana con áreas verdes y servicios.</p>
+            <div class="pcard-price">Desde S/35,000</div>
+          </div>
+        </div>
+
+        <!-- TARJETA Gemalta: reemplaza foto-gemalta.jpg -->
+        <div class="pcard">
+          <div class="pcard-img" onclick="showPage('gemalta')">
+            <img src="2 gemalta.png" alt="Gemalta" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Proyecto Gemalta</div>
+            <p class="pcard-desc">Lotes desde 1,000 m² a 30 min de Oxapampa. Naturaleza, aire puro y alta plusvalía.</p>
+            <div class="pcard-price">Desde S/35,000</div>
+          </div>
+        </div>
+
+        <!-- TARJETA Cataleya: reemplaza foto-catalaya.jpg -->
+        <div class="pcard">
+          <div class="pcard-img" onclick="showPage('cataleya')">
+            <img src="3 cataleya.png" alt="Cataleya" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Proyecto Villa Cataleya</div>
+            <p class="pcard-desc">Villa Cataleya en la Selva Central. Refugio en armonía con la naturaleza.</p>
+            <div class="pcard-price">Desde S/35,000</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PROYECTOS CULMINADOS -->
+      <div class="text-center" style="margin-top:64px;">
+        <!--<div class="section-tag">Proyectos culminados</div>-->
+        <h2 class="section-title">Proyectos Culminados</h2>
+        <p class="section-sub">Proyectos entregados con éxito. Parte de nuestra historia.</p>
+      </div>
+      <div class="projects-grid" style="margin-top:32px;">
+        <div class="pcard">
+          <div class="pcard-img" style="position:relative;">
+            <span class="pcard-badge">✓ Culminado</span>
+            <img src="4 esmeralda.png" alt="Esmeralda" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Proyecto Esmeralda</div>
+            <p class="pcard-desc">Habilitación urbana entregada con todos los servicios básicos completos.</p>
+            <div class="pcard-price" style="color:#22c55e;">Vendido</div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img" style="position:relative;">
+            <span class="pcard-badge">✓ Culminado</span>
+            <img src="5 los alpes.png" alt="Alpes" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Proyecto Los Alpes</div>
+            <p class="pcard-desc">Habilitación urbana entregada con todos los servicios básicos completos.</p>
+            <div class="pcard-price" style="color:#22c55e;">Vendido</div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img" style="position:relative;">
+            <span class="pcard-badge">✓ Culminado</span>
+            <img src="6 casa huerta.png" alt="Huertos el Alva" onerror="this.style.display='none'">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-name">Casa Huertos El Alva</div>
+            <p class="pcard-desc">Habilitación urbana entregada con todos los servicios básicos completos.</p>
+            <div class="pcard-price" style="color:#22c55e;">Vendido</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:44px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NOSOTROS + FORMULARIO ────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="section-tag">Quiénes somos</div>
+          <h2 class="section-title">Construimos más que terrenos</h2>
+          <p class="section-sub">En CONGA &amp; GALVAIA creemos que cada familia merece un lugar seguro, con procesos 100% transparentes.</p>
+          <div class="feats">
+            <div class="feat">
+              <div class="feat-icon">🏛️</div>
+              <div>
+                <div class="feat-title">Títulos en Registros Públicos</div>
+                <div class="feat-text">Todos nuestros lotes con escritura inscrita en Sunarp.</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-icon">🔧</div>
+              <div>
+                <div class="feat-title">Servicios Básicos Garantizados</div>
+                <div class="feat-text">Agua, luz y pistas asfaltadas desde el primer día.</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-icon">💰</div>
+              <div>
+                <div class="feat-title">Financiamiento Directo</div>
+                <div class="feat-text">Cuotas desde S/500 mensuales, sin banco.</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:28px;">
+            <button onclick="showPage('nosotros')" class="btn-outline">Conoce más sobre nosotros</button>
+          </div>
+        </div>
+        <!-- Formulario sticky -->
+        <div id="contacto-inicio">
+          <div class="form-box">
+          <div class="form-title">Encuentra el lote ideal para ti</div>
+          <p class="form-sub">Déjanos tus datos y un asesor se contactará contigo.</p>
+          <form onsubmit="enviarFormulario(event)">
+            <div class="fg">
+              <label>Nombres <em>*</em></label>
+              <input type="text" name="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>Celular <em>*</em></label>
+              <input type="tel" name="celular" placeholder="🇵🇪 000 000 000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico <em>*</em></label>
+              <input type="email" name="email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Proyecto de Interés</label>
+              <select name="proyecto">
+                <option value="">Seleccione un proyecto</option>
+                <option value="armonika" >Proyecto Armonika</option>
+                <option value="gemalta"  >Proyecto Gemalta</option>
+                <option value="cataleya" >Proyecto Cataleya</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>¿Desde dónde nos escribes?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta o mensaje"></textarea>
+            </div>
+            <div class="chk">
+              <input type="checkbox" id="priv-inicio" name="privacidad">
+              <label for="priv-inicio">He leído y acepto las <a href="#">políticas de protección de datos</a></label>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Información</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALERÍA CLIENTES ──────────────────────────────────── -->
+  <section class="section clientes-section">
+    <div class="wrap">
+      <div class="section-tag" style="text-align:center;">Nuestra comunidad</div>
+      <h2 class="section-title" style="text-align:center;">Nuestros Clientes</h2>
+    </div>
+    <!-- FILA 1 — izquierda a derecha -->
+    <div class="clientes-outer" style="margin-top:28px;">
+      <div class="clientes-track" id="clientesTrack1">
+        <div class="cli-item"><div class="cli-img"><img src="Portada 02.png"><div class="cli-ph"></div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-2.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-3.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-4.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-5.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-6.jpg</div></div></div>
+      </div>
+    </div>
+    <!-- FILA 2 — derecha a izquierda -->
+    <div class="clientes-outer" style="margin-top:14px;">
+      <div class="clientes-track clientes-track-rev" id="clientesTrack2">
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-7.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-8.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-9.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-10.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-11.jpg</div></div></div>
+        <div class="cli-item"><div class="cli-img"><div class="cli-ph">📷 cliente-12.jpg</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="text-center">
+        <div class="section-tag">Preguntas frecuentes</div>
+        <h2 class="section-title">Resolvemos tus dudas</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Qué garantías ofrecen en sus proyectos?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>Todos nuestros proyectos tienen título en Registros Públicos (Sunarp), servicios básicos y contratos transparentes.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Qué opciones de financiamiento tienen?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>Financiamiento directo desde S/500 mensuales, sin banco ni trámites complicados.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto tiempo toma la entrega del lote?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>La entrega se realiza al firmar el contrato y completar la inicial. Plazos informados con total transparencia.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Puedo visitar los proyectos antes de comprar?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>Sí. Lun–Vie 9am–6pm, Sáb 9am–1pm. También ofrecemos tours virtuales por videollamada.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Qué documentación necesito para comprar?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>Solo tu DNI vigente y la inicial acordada. Nuestro equipo legal prepara todo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">¿Puedo comprar desde el extranjero?<span class="faq-icon">+</span></button>
+          <div class="faq-body"><p>Sí. El proceso puede hacerse de forma remota con poder notarial. Contáctanos para más detalles.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █  PÁGINA: NOSOTROS  id="page-nosotros"            █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page" id="page-nosotros">
+
+  <!-- HERO BANNER NOSOTROS -->
+  <div class="page-hero-banner">
+    <div class="wrap">
+      <!--<div class="section-tag">Nuestra historia</div>-->
+      <h1 class="page-hero-title">¿Quiénes somos?</h1>
+    </div>
+  </div>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <p class="section-text" style="max-width:800px;margin:0 auto 40px;text-align:center;">
+        Somos un grupo empresarial dedicado al desarrollo inmobiliario sostenible en la selva central del Perú, enfocado en crear proyectos que integran inversión, calidad de vida y conexión con la naturaleza. Trabajamos bajo una visión de crecimiento ordenado e infraestructura planificada.
+      </p>
+
+      <!-- VIDEO empresa: reemplaza el div por <video controls><source src="video-empresa.mp4"></video> -->
+      <div class="video-box" style="max-width:900px;margin:0 auto 40px;">
+        <video controls><source src="Video portada/ARMONIKA web 2026  ABRIL .mp4"></video>
+      </div>
+
+      <!-- MISIÓN / VISIÓN / PROPÓSITO / VALORES — 2 columnas -->
+      <div class="mvpv-grid" style="max-width:980px;margin:0 auto;">
+
+        <!-- COLUMNA IZQUIERDA: Misión + Visión -->
+        <div class="mvpv-col">
+          <div class="mv-card">
+            <div class="mv-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2zm0-8h2v6h-2z"/></svg>
+            </div>
+            <div class="mv-card-body">
+              <h3>Misión</h3>
+              <p>Consolidarnos como una empresa profesional y estructurada, enfocada en el desarrollo inmobiliario horizontal con altos estándares de gestión y servicio.</p>
+            </div>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8a3 3 0 100 6 3 3 0 000-6z"/></svg>
+            </div>
+            <div class="mv-card-body">
+              <h3>Visión</h3>
+              <p>Convertirnos en un referente en la selva central con impacto nacional, creando un desarrollo inmobiliario responsable basado en confianza y calidad.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Propósito + Valores -->
+        <div class="mvpv-col">
+          <div class="mv-card">
+            <div class="mv-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <div class="mv-card-body">
+              <h3>Propósito</h3>
+              <p>Contribuir al bienestar y la tranquilidad de las familias mediante proyectos inmobiliarios seguros y responsables.</p>
+            </div>
+          </div>
+          <!-- Valores como tarjeta -->
+          <div class="mv-card mv-card-valores">
+            <div class="mv-card-body" style="width:100%;">
+              <h3>Nuestros Valores</h3>
+              <ul class="valores-list" style="margin-top:14px;">
+                <li><div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span>Honestidad</span></li>
+                <li><div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span>Responsabilidad</span></li>
+                <li><div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span>Amabilidad</span></li>
+                <li><div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span>Resiliencia</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA EMPRESA — slider automático -->
+  <section class="section" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="section-tag" style="text-align:center;">Nuestra empresa</div>
+      <h2 class="section-title" style="text-align:center;">Galería de la Empresa</h2>
+      <div class="empresa-slider" id="empresaSlider">
+        <!-- Para agregar fotos: reemplaza cada .emp-ph por <img src="empresa-X.jpg" class="active"> en el primer slide -->
+        <div class="emp-slide active"><div class="emp-ph"><img src="1 armonika.png" class="active"></div></div>
+        <div class="emp-slide"><div class="emp-ph">📷 empresa-2.jpg</div></div>
+        <div class="emp-slide"><div class="emp-ph">📷 empresa-3.jpg</div></div>
+        <div class="emp-slide"><div class="emp-ph">📷 empresa-4.jpg</div></div>
+        <div class="emp-slide"><div class="emp-ph">📷 empresa-5.jpg</div></div>
+        <div class="emp-slide"><div class="emp-ph">📷 empresa-6.jpg</div></div>
+        <!-- Flechas -->
+        <button class="emp-arrow emp-prev" onclick="empMove(-1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="emp-arrow emp-next" onclick="empMove(1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <!-- Dots -->
+        <div class="emp-dots" id="empDots"></div>
+      </div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █  PÁGINA: CONTACTO  id="page-contacto"            █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page" id="page-contacto">
+
+  <!-- HERO BANNER CONTACTO -->
+  <div class="page-hero-banner">
+    <div class="wrap">
+      <!--<div class="section-tag">Estamos para ti</div>-->
+      <h1 class="page-hero-title">Contáctanos</h1>
+      <p class="page-hero-sub">Encuentra el lote ideal para tu familia. Un asesor te guiará en cada paso del proceso.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO + FORMULARIO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="contacto-grid">
+        <!-- LADO IZQUIERDO: Concepto + Video -->
+        <div class="contacto-concepto">
+          <div class="concepto-texto">
+            <!--<div class="section-tag" style="margin-bottom:12px;">Quiénes somos</div>-->
+            <h2 class="concepto-titulo">Tu familia merece el mejor lugar para vivir</h2>
+            <p class="concepto-desc">
+              En <strong>Conga &amp; Galvaia</strong> desarrollamos proyectos inmobiliarios seguros, responsables y pensados para el bienestar de las familias peruanas. Cada lote que ofrecemos es el resultado de años de experiencia, trabajo transparente y un compromiso genuino con nuestros clientes.
+            </p>
+            <p class="concepto-desc">
+              No vendemos solo terrenos — construimos confianza. Somos el puente entre tu sueño y tu nuevo hogar en la selva central del Perú.
+            </p>
+
+          </div>
+          <!-- VIDEO empresa: reemplaza el div por <video controls><source src="video-empresa.mp4"></video> -->
+          <div class="contacto-video"><video controls><source src="Video portada/ARMONIKA web 2026  ABRIL .mp4"></video></div>
+        </div>
+        <!-- FORMULARIO sticky derecha -->
+        <div style="position:sticky;top:90px;align-self:start;">
+          <div class="form-box">
+          <div class="form-title">Encuentra el lote ideal para ti</div>
+          <p class="form-sub">Déjanos tus datos y un asesor se contactará contigo.</p>
+          <form onsubmit="enviarFormulario(event)">
+            <div class="fg">
+              <label>Nombres <em>*</em></label>
+              <input type="text" name="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>Celular <em>*</em></label>
+              <input type="tel" name="celular" placeholder="🇵🇪 000 000 000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico <em>*</em></label>
+              <input type="email" name="email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Proyecto de Interés</label>
+              <select name="proyecto">
+                <option value="">Seleccione un proyecto</option>
+                <option value="armonika" >Proyecto Armonika</option>
+                <option value="gemalta"  >Proyecto Gemalta</option>
+                <option value="cataleya" >Proyecto Cataleya</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>¿Desde dónde nos escribes?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta o mensaje"></textarea>
+            </div>
+            <div class="chk">
+              <input type="checkbox" id="priv-contacto" name="privacidad">
+              <label for="priv-contacto">He leído y acepto las <a href="#">políticas de protección de datos</a></label>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Información</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRAS OFICINAS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="text-center" style="margin-bottom:28px;">
+        <div class="section-tag">Encuéntranos</div>
+        <h2 class="section-title valores-titulo">Nuestras Oficinas</h2>
+      </div>
+      <div class="oficinas-grid">
+
+        <!-- OFICINA LIMA -->
+        <div class="oficina-card">
+          <div class="oficina-header">
+            <div class="oficina-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div><h3>Oficina Lima - Sede principal</h3><span>C. German Schreiber Gulsmanco 246<br>San Isidro 15036 — Lima, Perú</span></div>
+          </div>
+          <!-- MAPA: reemplaza el div por <iframe src="URL_GOOGLE_MAPS" allowfullscreen loading="lazy"></iframe> -->
+          <div class="oficina-mapa"><iframe src="https://www.google.com/maps/place/Conga+y+Galvaia+-+Sala+de+ventas+Lima/@-12.0958885,-77.0262535,17z/data=!4m14!1m7!3m6!1s0x9105c95774203ea1:0x300ef3d9fa56ae71!2sConga+y+Galvaia+-+Sala+de+ventas+Lima!8m2!3d-12.0958885!4d-77.0236732!16s%2Fg%2F11xd11mwwl!3m5!1s0x9105c95774203ea1:0x300ef3d9fa56ae71!8m2!3d-12.0958885!4d-77.0236732!16s%2Fg%2F11xd11mwwl?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" allowfullscreen loading="lazy"></iframe></div>
+          <div class="oficina-footer">
+          </div>
+        </div>
+
+        <!-- OFICINA OXAPAMPA -->
+        <div class="oficina-card">
+          <div class="oficina-header">
+            <div class="oficina-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div><h3>Oficina Oxapampa - Sede regional</h3><span>Jr. Mariscal Castilla N° 161<br>Oxapampa 19230, Perú</span></div>
+          </div>
+          <!-- MAPA: reemplaza el div por <iframe src="URL_GOOGLE_MAPS" allowfullscreen loading="lazy"></iframe> -->
+          <div class="oficina-mapa"><iframe src="https://www.google.com/maps/place/Conga+y+Galvaia+-+sala+de+ventas+oxapampa/@-10.5742081,-75.4067257,17z/data=!4m14!1m7!3m6!1s0x9109c141a6207d43:0xa780f33247bf88c1!2sConga+y+Galvaia+-+sala+de+ventas+oxapampa!8m2!3d-10.5742081!4d-75.4041454!16s%2Fg%2F11xd11r2y3!3m5!1s0x9109c141a6207d43:0xa780f33247bf88c1!8m2!3d-10.5742081!4d-75.4041454!16s%2Fg%2F11xd11r2y3?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" allowfullscreen loading="lazy"></iframe></div>
+          <div class="oficina-footer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █  PÁGINA: ARMONIKA  id="page-armonika"            █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page" id="page-armonika">
+
+  <!-- HERO: reemplaza div.hero-project-ph por <video autoplay muted loop playsinline> -->
+  <section class="hero-project">
+    <div class="hero-project-bg">
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="Video portada/ARMONIKA web 2026  ABRIL .mp4" type="video/mp4">
+</video>
+    </div>
+    <div class="hero-project-overlay"></div>
+    <div class="hero-project-content">
+      <div class="wrap">
+        <h1>Armónika Colonia Ecoamigable</h1>
+        <p>El proyecto con habilitación urbana más grande de la Selva Central. Lotes para casa de campo desde 500 m² hasta 2,000 m², ubicados a solo 15 minutos de la Plaza Principal de Oxapampa.</p>
+        <button onclick="showPage('contacto')" class="btn-outline">Contactar Ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN + FORMULARIO STICKY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="ubicacion-grid">
+        <div>
+          <div class="section-tag">Ubicación de nuestro proyecto</div>
+          <h2 class="section-title">Conoce Armonika</h2>
+          <p class="section-text">A solo 15 minutos de la Plaza Principal de Oxapampa, Armónika Colonia Ecoamigable se ubica en el sector Peña Flor, con acceso directo por la principal vía nacional que conecta Oxapampa con Lima y diversas regiones del país. Su ubicación estratégica permite un acceso cómodo y seguro durante todo el año, rodeado de naturaleza y paisajes característicos de la Selva Central.</p>
+          <p class="section-text">Durante el recorrido hacia el proyecto, se encuentran reconocidos atractivos turísticos como la Catarata Río Tigre, el Manantial La Virgen, el Mirador El Abra y la Casa Museo Schlaefli, además de diversos restaurantes campestres, centros educativos, universidades, comercios y espacios recreativos que complementan la experiencia de vivir o invertir en una zona con gran potencial de desarrollo. La combinación entre conectividad, naturaleza y cercanía a servicios convierte a Armónika en una excelente opción para construir una casa de campo o realizar una inversión con visión de futuro.</p>
+
+          <!-- VIDEO: reemplaza el div por <video controls> o <iframe> YouTube -->
+          <div class="video-box" style="margin-top:28px;"><video controls src="Video portada/ARMONIKA web 2026  ABRIL .mp4" type="video/mp4"></div>
+          
+        </div>
+        <!-- Formulario sticky -->
+        <div class="form-sticky">
+          <div class="form-box">
+          <div class="form-title">Encuentra el lote ideal para ti</div>
+          <p class="form-sub">Déjanos tus datos y un asesor se contactará contigo.</p>
+          <form onsubmit="enviarFormulario(event)">
+            <div class="fg">
+              <label>Nombres <em>*</em></label>
+              <input type="text" name="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>Celular <em>*</em></label>
+              <input type="tel" name="celular" placeholder="🇵🇪 000 000 000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico <em>*</em></label>
+              <input type="email" name="email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Proyecto de Interés</label>
+              <select name="proyecto">
+                <option value="">Seleccione un proyecto</option>
+                <option value="armonika" selected>Proyecto Armonika</option>
+                <option value="gemalta"  >Proyecto Gemalta</option>
+                <option value="cataleya" >Proyecto Cataleya</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>¿Desde dónde nos escribes?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta o mensaje"></textarea>
+            </div>
+            <div class="chk">
+              <input type="checkbox" id="priv-armonika" name="privacidad">
+              <label for="priv-armonika">He leído y acepto las <a href="#">políticas de protección de datos</a></label>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Información</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONOS DE SERVICIOS E INFRAESTRUCTURA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Lo que incluye</div>
+      <h2 class="section-title">Servicios e Infraestructura</h2>
+      <p class="section-text">Todo lo que Armonika ofrece para que tu inversión tenga el mayor valor y calidad de vida.</p>
+      <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 1_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Luz electrica.png" alt="Luz eléctrica">
+        </div>
+        <div class="beneficio-nombre">Luz eléctrica</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 2_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Agua potable.png" alt="Agua potable">
+        </div>
+        <div class="beneficio-nombre">Agua potable</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 3_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Casa de campo.png" alt="Casa de campo">
+        </div>
+        <div class="beneficio-nombre">Casa de campo</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 4_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Titulo propiedad.png" alt="Título de propiedad">
+        </div>
+        <div class="beneficio-nombre">Título de propiedad</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 5_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Zona meditacion.png" alt="Zona meditación">
+        </div>
+        <div class="beneficio-nombre">Zona meditación</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 6_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Area parrilla.png" alt="Área de parrillas">
+        </div>
+        <div class="beneficio-nombre">Área de parrillas</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 7_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Piscina.png" alt="Piscina">
+        </div>
+        <div class="beneficio-nombre">Piscina</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 8_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Vias afirmadas.png" alt="Vías afirmadas">
+        </div>
+        <div class="beneficio-nombre">Vías afirmadas</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 9_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Losa deportiva.png" alt="Losa deportiva">
+        </div>
+        <div class="beneficio-nombre">Losa deportiva</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 10_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Area verde.png" alt="Áreas verdes">
+        </div>
+        <div class="beneficio-nombre">Áreas verdes</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 11_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Puente acceso.png" alt="Puente de acceso">
+        </div>
+        <div class="beneficio-nombre">Puente de acceso</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 12_ICONOS_ARMONIKA.png -->
+          <img src="ARMONIKA/Caseta seguridad.png" alt="Caseta de seguridad">
+        </div>
+        <div class="beneficio-nombre">Caseta de seguridad</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA MULTIMEDIA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Galería Multimedia</div>
+      <h2 class="section-title">Imágenes del Proyecto</h2>
+      <p class="section-text">En Armónika, cada espacio está diseñado para brindarte privacidad y confort en un entorno sostenible.</p>
+
+      <div class="gal3-outer" style="padding:0 28px;">
+      <div class="gal3-wrap">
+        <button class="gal3-arrow gal3-prev" onclick="gal3Move('armonika',-1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gal3-track" id="gal3-armonika">
+          <!-- Para agregar fotos: reemplaza cada gal3-ph por <img src="tu-foto.jpg" alt="..."> dentro de gal3-img -->
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Vista aérea</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Parque central.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Parque central</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Calles y area verde.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Calles y áreas verdes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Portico ingreso.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Pórtico de ingreso</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Lotes.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Lotes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Acceso principal.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Acceso principal</div>
+          </div>
+        </div>
+        <button class="gal3-arrow gal3-next" onclick="gal3Move('armonika',1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="mapa-grid">
+        <!-- MAPA: reemplaza el div por <iframe src="URL_GOOGLE_MAPS" allowfullscreen loading="lazy"></iframe> -->
+        <div class="mapa-box">🗺️ Google Maps Armonika</div>
+        <div>
+          <div class="section-tag">Ubicación</div>
+          <h2 class="section-title">Armonika</h2>
+          <p class="section-text">Se ubica en Oxapampa, a 75 minutos de Lima. Zona privilegiada por su biodiversidad y en constante crecimiento con alta plusvalía.</p>
+          <div class="mapa-btns">
+            <a href="https://maps.google.com" target="_blank" class="btn-maps">Ver en Google Maps</a>
+            <a href="https://wa.me/51976000000" target="_blank" class="btn-wsp">Contactar Ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO AVANCES DE OBRA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Avances de obra</div>
+      <h2 class="section-title">Progreso del Proyecto</h2>
+      <p class="section-text">Conoce el avance real de tu inversión. Actualizamos constantemente los videos de progreso de obra.</p>
+      <!-- VIDEO: reemplaza el div por <video controls> o <iframe> YouTube -->
+      <div class="video-box" style="aspect-ratio:16/7;">🎬 video-armonika-avances.mp4</div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █  PÁGINA: GEMALTA  id="page-gemalta"              █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page" id="page-gemalta">
+
+  <section class="hero-project">
+    <div class="hero-project-bg">
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="Video portada/GEMALTA WEB - 30 ABRIL .mp4" type="video/mp4">
+    </div>
+    <div class="hero-project-overlay"></div>
+    <div class="hero-project-content">
+      <div class="wrap">
+        <h1>Gemalta Colonia Urbana</h1>
+        <p>A tan solo 13 minutos de la Plaza Principal de Oxapampa, descubre un moderno proyecto en lanzamiento con lotes desde 200 m², una excelente ubicación y beneficios pensados para impulsar tu inversión desde el primer día.</p>
+        <button onclick="showPage('contacto')" class="btn-outline">Contactar Ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="ubicacion-grid">
+        <div>
+          <div class="section-tag">Ubicación de nuestro proyecto</div>
+          <h2 class="section-title">Conoce Gemalta</h2>
+          <p class="section-text">A tan solo 13 minutos de la Plaza Principal de Oxapampa, descubre un moderno proyecto en lanzamiento con lotes desde 200 m², ubicado en una zona estratégica con acceso directo desde la principal vía nacional que conecta Oxapampa con Lima y diversas regiones del país. Su excelente ubicación ofrece comodidad, conectividad y proyección de crecimiento, con disponibilidad de infraestructura de fibra óptica a lo largo de la vía de acceso, facilitando el acceso a servicios de telecomunicaciones e internet de alta velocidad.</p>
+          <p class="section-text">Además, se encuentra cerca de restaurantes, comercios, centros educativos, espacios recreativos y atractivos turísticos de la zona, convirtiéndose en una excelente oportunidad para invertir y construir en una de las áreas con mayor desarrollo de Oxapampa.</p>
+          <div class="video-box" style="margin-top:28px;"><video controls src="Video portada/GEMALTA WEB - 30 ABRIL .mp4" type="video/mp4"></div>
+        </div>
+        <div class="form-sticky">
+          <div class="form-box">
+          <div class="form-title">Encuentra el lote ideal para ti</div>
+          <p class="form-sub">Déjanos tus datos y un asesor se contactará contigo.</p>
+          <form onsubmit="enviarFormulario(event)">
+            <div class="fg">
+              <label>Nombres <em>*</em></label>
+              <input type="text" name="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>Celular <em>*</em></label>
+              <input type="tel" name="celular" placeholder="🇵🇪 000 000 000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico <em>*</em></label>
+              <input type="email" name="email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Proyecto de Interés</label>
+              <select name="proyecto">
+                <option value="">Seleccione un proyecto</option>
+                <option value="armonika" >Proyecto Armonika</option>
+                <option value="gemalta"  selected>Proyecto Gemalta</option>
+                <option value="cataleya" >Proyecto Cataleya</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>¿Desde dónde nos escribes?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta o mensaje"></textarea>
+            </div>
+            <div class="chk">
+              <input type="checkbox" id="priv-gemalta" name="privacidad">
+              <label for="priv-gemalta">He leído y acepto las <a href="#">políticas de protección de datos</a></label>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Información</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONOS: sube tus iconos de Gemalta y reemplaza esta sección -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Lo que incluye</div>
+      <h2 class="section-title">Servicios e Infraestructura</h2>
+      <p class="section-text">Todo lo que Gemalta ofrece para que tu inversión tenga el mayor valor y calidad de vida.</p>
+      <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 1_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 1.png" alt="Luz eléctrica">
+        </div>
+        <div class="beneficio-nombre">Diseño urbano planificado</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 2_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Agua potable.png" alt="Agua potable">
+        </div>
+        <div class="beneficio-nombre">Agua potable</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 3_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 2.png" alt="Casa de campo">
+        </div>
+        <div class="beneficio-nombre">Pórtico de ingreso</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 4_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 9.png" alt="Título de propiedad">
+        </div>
+        <div class="beneficio-nombre">Amplios parques centrales</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 5_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Electricidad.png" alt="Zona meditación">
+        </div>
+        <div class="beneficio-nombre">Electrificación</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 6_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Internet.png" alt="Área de parrillas">
+        </div>
+        <div class="beneficio-nombre">Fibra óptica</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 7_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 6.png" alt="Piscina">
+        </div>
+        <div class="beneficio-nombre">Calles afirmadas</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 8_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 7.png" alt="Vías afirmadas">
+        </div>
+        <div class="beneficio-nombre">Veredas permeables <br>(eco-friendly)</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 9_ICONOS_ARMONIKA.png -->
+          <img src="GEMALTA/Icono 8.png" alt="Losa deportiva">
+        </div>
+        <div class="beneficio-nombre">Cuneta de cemento <br>(sistema pluvial)</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA MULTIMEDIA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Galería Multimedia</div>
+      <h2 class="section-title">Imágenes del Proyecto</h2>
+      <p class="section-text">Descubre los espacios y paisajes únicos que Gemalta tiene para ofrecerte.</p>
+      <div class="gal3-outer" style="padding:0 28px;">
+      <div class="gal3-wrap">
+        <button class="gal3-arrow gal3-prev" onclick="gal3Move('gemalta',-1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gal3-track" id="gal3-gemalta">
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Vista aérea</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Acceso principal</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Áreas verdes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Lotes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Entorno natural</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Infraestructura</div>
+          </div>
+        </div>
+        <button class="gal3-arrow gal3-next" onclick="gal3Move('gemalta',1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="mapa-grid">
+        <div class="mapa-box">🗺️ Google Maps Gemalta</div>
+        <div>
+          <div class="section-tag">Ubicación</div>
+          <h2 class="section-title">Gemalta</h2>
+          <p class="section-text">Se ubica a 30 minutos de Oxapampa, rodeado de paisajes únicos y en constante crecimiento.</p>
+          <div class="mapa-btns">
+            <a href="https://maps.google.com" target="_blank" class="btn-maps">Ver en Google Maps</a>
+            <a href="https://wa.me/51976000000" target="_blank" class="btn-wsp">Contactar Ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Avances de obra</div>
+      <h2 class="section-title">Progreso del Proyecto</h2>
+      <p class="section-text">Conoce el avance real de tu inversión. Actualizamos constantemente los videos de progreso de obra.</p>
+      <div class="video-box" style="aspect-ratio:16/7;">🎬 video-gemalta-avances.mp4</div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     ████████████████████████████████████████████████████
+     █  PÁGINA: CATALEYA  id="page-cataleya"            █
+     ████████████████████████████████████████████████████
+============================================================== -->
+<section class="page" id="page-cataleya">
+
+  <section class="hero-project">
+    <div class="hero-project-bg">
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="Video portada/CATALEYA - WEB 30 DE ABRIL .mp4" type="video/mp4">
+    </div>
+    <div class="hero-project-overlay"></div>
+    <div class="hero-project-content">
+      <div class="wrap">
+        <h1>Urb. Villa Cataleya</h1>
+        <p>A solo 10 minutos de la Plaza Principal de Oxapampa, encuentra lotes desde 200 m² en un proyecto consolidado, con importantes avances de obra y la confianza de muchas familias inversionistas que ya hicieron realidad su sueño de tener un terreno propio.</p>
+        <button onclick="showPage('contacto')" class="btn-outline">Contactar Ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="ubicacion-grid">
+        <div>
+          <div class="section-tag">Ubicación de nuestro proyecto</div>
+          <h2 class="section-title">Conoce Cataleya</h2>
+          <p class="section-text">A solo 10 minutos de la Plaza Principal de Oxapampa, Cataleya se ubica en el sector Peña Flor y ofrece lotes desde 200 m² en un proyecto consolidado, con importantes avances de obra y la confianza de muchas familias inversionistas que ya hicieron realidad su sueño de tener un terreno propio. Su acceso directo desde la principal vía nacional que conecta Oxapampa con Lima y diversas regiones del país garantiza comodidad y conectividad durante todo el año.</p>
+          <p class="section-text">Además, su ubicación permite disfrutar de la cercanía a atractivos turísticos como la Catarata Río Tigre, el Manantial La Virgen, el Mirador El Abra y la Casa Museo Schlaefli, así como de restaurantes, centros educativos, comercios y diversos espacios recreativos. Todo ello convierte a Cataleya en una excelente alternativa para vivir, construir o invertir en una de las zonas con mayor proyección de Oxapampa.</p>
+          <div class="video-box" style="margin-top:28px;"><video controls src="Video portada/CATALEYA - WEB 30 DE ABRIL .mp4" type="video/mp4"></div>
+        </div>
+        <div class="form-sticky">
+          <div class="form-box">
+          <div class="form-title">Encuentra el lote ideal para ti</div>
+          <p class="form-sub">Déjanos tus datos y un asesor se contactará contigo.</p>
+          <form onsubmit="enviarFormulario(event)">
+            <div class="fg">
+              <label>Nombres <em>*</em></label>
+              <input type="text" name="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>Celular <em>*</em></label>
+              <input type="tel" name="celular" placeholder="🇵🇪 000 000 000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico <em>*</em></label>
+              <input type="email" name="email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Proyecto de Interés</label>
+              <select name="proyecto">
+                <option value="">Seleccione un proyecto</option>
+                <option value="armonika" >Proyecto Armonika</option>
+                <option value="gemalta"  >Proyecto Gemalta</option>
+                <option value="cataleya" selected>Proyecto Cataleya</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>¿Desde dónde nos escribes?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta o mensaje"></textarea>
+            </div>
+            <div class="chk">
+              <input type="checkbox" id="priv-cataleya" name="privacidad">
+              <label for="priv-cataleya">He leído y acepto las <a href="#">políticas de protección de datos</a></label>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Información</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONOS: sube tus iconos de Cataleya -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Lo que incluye</div>
+      <h2 class="section-title">Servicios e Infraestructura</h2>
+      <p class="section-text">Todo lo que Cataleya ofrece para que tu inversión tenga el mayor valor y calidad de vida.</p>
+      <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 1_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 1.png" alt="Luz eléctrica">
+        </div>
+        <div class="beneficio-nombre">Plazoleta</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 2_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 2.png" alt="Agua potable">
+        </div>
+        <div class="beneficio-nombre">Alameda</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 3_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 3.png" alt="Casa de campo">
+        </div>
+        <div class="beneficio-nombre">Vías afirmadas</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 4_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 4.png" alt="Título de propiedad">
+        </div>
+        <div class="beneficio-nombre">Puente</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 5_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 5.png" alt="Zona meditación">
+        </div>
+        <div class="beneficio-nombre">Agua potable</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 6_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 6.png" alt="Área de parrillas">
+        </div>
+        <div class="beneficio-nombre">Punto de luz eléctrica</div>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">
+          <!-- Icono: 7_ICONOS_ARMONIKA.png -->
+          <img src="CATALEYA/Icono 7.png" alt="Piscina">
+        </div>
+        <div class="beneficio-nombre">Título de propiedad</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA MULTIMEDIA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Galería Multimedia</div>
+      <h2 class="section-title">Imágenes del Proyecto</h2>
+      <p class="section-text">Explora los espacios y la naturaleza que rodean a Cataleya.</p>
+      <div class="gal3-outer" style="padding:0 28px;">
+      <div class="gal3-wrap">
+        <button class="gal3-arrow gal3-prev" onclick="gal3Move('cataleya',-1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gal3-track" id="gal3-cataleya">
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Vista aérea</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Acceso principal</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Áreas verdes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Lotes</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Entorno natural</div>
+          </div>
+          <div class="gal3-item">
+            <div class="gal3-img"><img src="ARMONIKA/Vista aerea.png" alt="..."><div class="gal3-ph"></div></div>
+            <div class="gal3-label">Infraestructura</div>
+          </div>
+        </div>
+        <button class="gal3-arrow gal3-next" onclick="gal3Move('cataleya',1)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="mapa-grid">
+        <div class="mapa-box">🗺️ Google Maps Cataleya</div>
+        <div>
+          <div class="section-tag">Ubicación</div>
+          <h2 class="section-title">Cataleya</h2>
+          <p class="section-text">Se ubica en Oxapampa, a minutos de la plaza, rodeada de biodiversidad y paisajes únicos.</p>
+          <div class="mapa-btns">
+            <a href="https://maps.google.com" target="_blank" class="btn-maps">Ver en Google Maps</a>
+            <a href="https://wa.me/51976000000" target="_blank" class="btn-wsp">Contactar Ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-tag">Avances de obra</div>
+      <h2 class="section-title">Progreso del Proyecto</h2>
+      <p class="section-text">Conoce el avance real de tu inversión. Actualizamos constantemente los videos de progreso de obra.</p>
+      <div class="video-box" style="aspect-ratio:16/7;">🎬 video-cataleya-avances.mp4</div>
+    </div>
+  </section>
+
+
+
+</section>
+
+
+<!-- ==============================================================
+     JS GLOBAL — galvaia-scripts.js contiene:
+     - Sistema de navegación entre páginas
+     - Hero slider
+     - Galería de imágenes
+     - FAQ acordeón
+     - Validación de formulario
+============================================================== -->
+<script src="galvaia-scripts.js"></script>
+
+
+  <footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo"><img src="Logo.png" alt="Conga & Galvaia"></div>
+        <p class="footer-desc">Tu socio confiable en inversión inmobiliaria. Proyectos de calidad, ubicaciones premium y acompañamiento integral.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/profile.php?id=61572295520604" class="soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.027 4.388 11.024 10.125 11.927v-8.437H7.078v-3.49h3.047V9.413c0-3.022 1.793-4.692 4.533-4.692 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.928-1.956 1.881v2.266h3.328l-.532 3.49h-2.796v8.437C19.612 23.097 24 18.1 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Proyectos</h5>
+        <ul>
+          <li><a href="#" onclick="showPage('armonika')">Armonika</a></li>
+          <li><a href="#" onclick="showPage('gemalta')">Gemalta</a></li>
+          <li><a href="#" onclick="showPage('cataleya')">Cataleya</a></li>
+          <li class="footer-culminados-label">Culminados</li>
+          <li><a href="#" class="footer-culminado">Esmeralda</a></li>
+          <li><a href="#" class="footer-culminado">Los Alpes</a></li>
+          <li><a href="#" class="footer-culminado">El Alva</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contáctanos</h5>
+        <ul>
+          <li>
+            <svg class="footer-ico" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 7a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+            <span>+51 930 877 156</span>
+          </li>
+          <li>
+            <svg class="footer-ico" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="mailto:congalvaia@gmail.com" style="color:rgba(255,255,255,0.55);font-size:13px;text-decoration:none;">congalvaia@gmail.com</a>
+          </li>
+          <li>
+            <svg class="footer-ico" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+            <span>Germán Schreiber 246, Of. 402 – San Isidro, Lima</span>
+          </li>
+          <li>
+            <svg class="footer-ico" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+            <span>Jr. Schreiber – La Casualidad, Oxapampa</span>
+          </li>
+          <li>
+            <svg class="footer-ico" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm.5 5v6l4.5 2.7-.75 1.23L11 13.5V7h1.5z"/></svg>
+            <span>Lun–Dom 9am–6pm</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Libro de Reclamaciones</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 CONGA & GALVAIA Grupo Inmobiliario. Todos los derechos reservados.</p>
+      <a href="#">DigitalTec</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
